@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArticleGen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <div class="max-w-3xl mx-auto p-6">
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl font-bold">ArticleGen</h1>
+      <p class="text-sm text-slate-500">Generate a full article from just a title.</p>
+    </header>
+
+    <form action="/generate" method="POST" class="bg-white shadow rounded-xl p-5 space-y-4">
+      <label class="block text-sm font-medium">Enter Title</label>
+      <input
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        id="prompt" name="prompt" type="text" placeholder="The Future of Artificial Intelligence" required />
+
+      <button
+        class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-700">
+        Generate
+      </button>
+    </form>
+
+    {% if article_html %}
+    <section class="mt-8 bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-3">Result</h2>
+      <article class="prose max-w-none">
+        {{ article_html|safe }}
+      </article>
+    </section>
+    {% endif %}
+  </div>
+</body>
+</html>
